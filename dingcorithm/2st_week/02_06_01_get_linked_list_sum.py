@@ -15,18 +15,19 @@ class LinkedList:
         cur.next = Node(value)
 
 
-def get_linked_list_sum(linked_list_1, linked_list_2):
-    sum_1 = 0
-    cur_1 = linked_list_1.head
-    while cur_1 is not None:
-        sum_1 = sum_1 * 10 + cur_1.data
-        cur_1 = cur_1.next
+def get_single_linked_list_sum(linked_list):
+    sum = 0
+    cur = linked_list.head
+    while cur is not None:
+        sum = sum * 10 + cur.data
+        cur = cur.next
 
-    sum_2 = 0
-    cur_2 = linked_list_2.head
-    while cur_2 is not None:
-        sum_2 = sum_2 * 10 + cur_2.data
-        cur_2 = cur_2.next
+    return sum
+
+
+def get_linked_list_sum(linked_list_1, linked_list_2):
+    sum_1 = get_single_linked_list_sum(linked_list_1)
+    sum_2 = get_single_linked_list_sum(linked_list_2)
 
     return sum_1 + sum_2
 
