@@ -1,5 +1,5 @@
 
-finding_target = 2
+finding_target = 7
 finding_numbers = [0, 3, 5, 6, 1, 2, 4]
 
 6

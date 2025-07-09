@@ -1,19 +1,13 @@
 
 input = "abcba"
 
-def factorial(n):
-    if n == round(len(string)/2):
-        return 1
-
-
-
-    return n * factorial(n - 1) # 이 부분이 포인트
 
 def is_palindrome(string):
-
-    factorial(len(string))
-
-    return True
+    if len(string) <= 1:
+        return True
+    if string[0] != string[-1]:
+        return False
+    return is_palindrome(string[1:-1])
 
 
 print(is_palindrome(input))
