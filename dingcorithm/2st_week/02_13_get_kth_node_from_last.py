@@ -17,18 +17,20 @@ class LinkedList:
     def print_all(self):
         cur = self.head
         while cur is not None:
-            print(cur.data)
             cur = cur.next
 
     def get_kth_node_from_last(self, k):
-        cur = self.head
-        prev = 0
+        slow = self.head
+        fast = self.head
 
-        while cur.next is not None:
-            prev = cur
-            cur = cur.next
+        for i in range(k):
+            fast = fast.next
 
-        return prev
+        while fast.next is not None:
+            slow = slow.next
+            fast = fast.next
+
+        return slow
 
 
 linked_list = LinkedList(6)
@@ -36,6 +38,8 @@ linked_list.append(7)
 linked_list.append(8)
 linked_list.append(9)
 linked_list.append(5)
-linked_list.print_all()
+# linked_list.append(11)
+# linked_list.append(15)
+# linked_list.print_all()
 
-print(linked_list.get_kth_node_from_last(2).data)  # 7이 나와야 합니다!
+print(linked_list.get_kth_node_from_last(1).data)  # 7이 나와야 합니다!
