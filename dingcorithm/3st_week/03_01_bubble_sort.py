@@ -1,7 +1,7 @@
 
+
+# 버블정렬
 input = [4, 6, 2, 9, 1]
-
-
 
 def bubble_sort(array):
 
