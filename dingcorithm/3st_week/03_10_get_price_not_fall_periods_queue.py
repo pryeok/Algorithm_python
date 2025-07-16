@@ -1,13 +1,26 @@
-
-
+from collections import deque
 
 prices = [1, 2, 3, 2, 3]
 
 def get_price_not_fall_periods(prices):
 
+    result = []
+    prices = deque(prices) # deque 메서드를 통해서 prices 리스트를 Queue 형태로 변환!!!!
 
+    while prices: # 해당 queqe가 비어있지 않다면 계속 반복해라 !!
 
-    return
+        cur = prices.popleft()
+        index = 0
+
+        for i in prices:
+            if cur <= i:
+                index += 1
+            else:
+                index += 1
+                break
+        result.append(index)
+
+    return result
 
 
 print(get_price_not_fall_periods(prices))
