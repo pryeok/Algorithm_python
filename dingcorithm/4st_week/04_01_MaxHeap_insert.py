@@ -19,7 +19,6 @@ class MaxHeap:
             if self.items[parent_index] < self.items[cur_index]:
                 self.items[parent_index], self.items[cur_index] = self.items[cur_index], self.items[parent_index]
                 cur_index = parent_index
-                print("cur_index : ", cur_index)
             else:
                 break
 
