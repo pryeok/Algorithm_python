@@ -21,7 +21,6 @@ def get_melon_best_album(genre_array, play_array): # 노래별 재생 횟수
         # {'classic': [(0, 500), (2, 150), (3, 800)], 'pop': [(1, 600), (4, 2500)]}
 
 
-
     return genre_dict
 
 
