@@ -33,3 +33,11 @@ def bfs_queue(adj_graph, start_node):
 
 print(bfs_queue(graph, 1))  # 1 이 시작노드입니다!
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 이 출력되어야 합니다!
+
+  # curindex  que   visited
+  #    0       1       0
+  #    1     2 3 4     1
+  #    2   3 4 5 6 7   2
+  #    3    4 5 6 7    3
+  #    4    5 6 7 8    4
+  #    5    6 7 8 9    5

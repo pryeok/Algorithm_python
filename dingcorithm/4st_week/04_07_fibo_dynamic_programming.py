@@ -11,27 +11,37 @@ memo = {
 }
 
 ## 내가 풀어본 문제 (이거는 사실 반복문식) -> O(n)
-def fibo_dynamic_programming(n, fibo_memo):
-
-    cur_index = 3
-    while cur_index <= n:
-        if cur_index not in fibo_memo:
-            fibo_memo[cur_index] = fibo_memo[cur_index-2] + fibo_memo[cur_index-1]
-        cur_index += 1
-
-    return fibo_memo[n]
+# def fibo_dynamic_programming(n, fibo_memo):
+#
+#     cur_index = 3
+#     while cur_index <= n:
+#         if cur_index not in fibo_memo:
+#             fibo_memo[cur_index] = fibo_memo[cur_index-2] + fibo_memo[cur_index-1]
+#         cur_index += 1
+#
+#     return fibo_memo[n]
 
 
 ## 정답 (재귀 + 메모이제이션 방식) -> O(n)
-# def fibo_dynamic_programming(n, fibo_memo):
-#
-      # fibo_dynamic_programming(n)을 호출해서 결과를 저장해놨다면, 다시 계산하지 않고 바로 꺼내는 중복 계산을 막아주는 핵심 포인트!!!
-#     if n in fibo_memo:
-#         return fibo_memo[n]
-#
-#     nth_fibo = fibo_dynamic_programming(n - 1, fibo_memo) + fibo_dynamic_programming(n - 2, fibo_memo)
-#     fibo_memo[n] = nth_fibo
-#     return nth_fibo
+def fibo_dynamic_programming(n, fibo_memo):
+
+    # fibo_dynamic_programming(n)을 호출해서 결과를 저장해놨다면, 다시 계산하지 않고 바로 꺼내는 중복 계산을 막아주는 핵심 포인트!!!
+    if n in fibo_memo:
+        print("n : ", n)
+        print("fibo_memo[n] : ", fibo_memo[n])
+        print("==========================")
+        return fibo_memo[n]
+
+    print("n 값 : ", n)
+
+    nth_fibo = fibo_dynamic_programming(n - 1, fibo_memo) + fibo_dynamic_programming(n - 2, fibo_memo)
+    fibo_memo[n] = nth_fibo
+
+    print("nth_fibo : ", nth_fibo)
+
+    print('--------------------------')
+
+    return nth_fibo
 
 print(fibo_dynamic_programming(input, memo))
 
