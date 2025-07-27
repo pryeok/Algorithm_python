@@ -7,41 +7,42 @@ b = 2
 
 
 def catch_me(cony_loc, brown_loc):
-    cony_queue = deque()
-    brown_queue = deque()
+    time = 0
     queue = deque()
+    queue.append((brown_loc, 0))  # 위치와 시간을 담아줄게요!.
+    visited = [{} for _ in range(200001)] # [{}. {} ..... 20만개]
+    # visited 딕셔너리에서 위치는 20만개 안으로 정해져있어서 인덱스로 정확하게 박아서 저장해주고 시간은 정해져있지 않기 때문에 유동적인 key값으로 처리!!
+    # visited[10] = {1: True, 10: True, 600: 700: ...}
 
-    queue.append((brown_loc, 0))
-    print(queue)
+    while cony_loc < 200000:
+        cony_loc += time
+        if time in visited[cony_loc]:
+            return time
 
+        for i in range(0, len(queue)):  # Q. Queue 인데 while 을 안 쓰는 이유를 고민해보세요!
+            current_position, current_time = queue.popleft()
 
+            new_position = current_position - 1
+            new_time = current_time + 1
+            if new_position >= 0 and new_time not in visited[new_position]:
+                visited[new_position][new_time] = True
+                queue.append((new_position, new_time))
 
+            new_position = current_position + 1
+            if new_position < 200001 and new_time not in visited[new_position]:
+                visited[new_position][new_time] = True
+                queue.append((new_position, new_time))
 
+            new_position = current_position * 2
+            if new_position < 200001 and new_time not in visited[new_position]:
+                visited[new_position][new_time] = True
+                queue.append((new_position, new_time))
 
-
-    return
-
-
-print(catch_me(c, b))  # 5가 나와야 합니다!
-
-# print("정답 = 3 / 현재 풀이 값 = ", catch_me(10,3))
-# print("정답 = 8 / 현재 풀이 값 = ", catch_me(51,50))
-# print("정답 = 28 / 현재 풀이 값 = ", catch_me(550,500))
-
-
-# 11 2
-
-# 11+1=12, 2-1=1, 2+1=3, 2*2=4
-# 11+3=14, 1-1=0, 1+1=2, 1*2=2 | 3-1=2, 3+1=4, 3*2=6 | 4-1=3, 4+1=5, 4*2=8
-# 11+6=17,
-# 11+10=21, 16*2=32
-# 11+15=26, 32*2=64
-
-# 10 3
-# 10+1=11, 3*2=6
-# 11+3=14, 6*2=12
-# 14+6=20, 12*2=24
-# 20+10=21, 16*2=32
-# 21+15=36, 32-1=31
+        time += 1
 
 
+print(catch_me(c, b))
+
+print("정답 = 3 / 현재 풀이 값 = ", catch_me(10,3))
+print("정답 = 8 / 현재 풀이 값 = ", catch_me(51,50))
+print("정답 = 28 / 현재 풀이 값 = ", catch_me(550,500))
