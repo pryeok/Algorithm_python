@@ -29,6 +29,7 @@ def solution(lines):
     for line in lines:
         traffic_times = line.split(" ")
 
+
         print(traffic_times)
         print(traffic_times[1])
         print(traffic_times[2])
